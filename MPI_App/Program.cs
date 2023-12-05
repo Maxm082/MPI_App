@@ -131,71 +131,98 @@ class Program
         switch (selectedQuery)
         {
             case 1:
-                List<TableDbPhoneIp> list1 = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(gatheredResults[0]);
-                foreach (var item in list1)
+                foreach (string strGatheredResults in gatheredResults)
                 {
-                    Console.WriteLine($"\n {item.id} " +
-                        $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    List<TableDbPhoneIp> list = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(strGatheredResults);
+                    foreach (var item in list)
+                    {
+                        Console.WriteLine($"\n {item.id} " +
+                            $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    }
                 }
                 break;
             case 2:
-                List<TableDbPhoneIp> list2 = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(gatheredResults[0]);
-                foreach (var item in list2)
+                foreach (string strGatheredResults in gatheredResults)
                 {
-                    Console.WriteLine($"\n {item.id} " +
-                        $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    List<TableDbPhoneIp> list = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(strGatheredResults);
+                    foreach (var item in list)
+                    {
+                        Console.WriteLine($"\n {item.id} " +
+                            $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    }
                 }
                 break;
             case 3:
-                List<TableDbPhoneIp> list3 = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(gatheredResults[0]);
-                foreach (var item in list3)
+                foreach (string strGatheredResults in gatheredResults)
                 {
-                    Console.WriteLine($"\n {item.id} " +
-                        $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    List<TableDbPhoneIp> list = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(strGatheredResults);
+                    foreach (var item in list)
+                    {
+                        Console.WriteLine($"\n {item.id} " +
+                            $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    }
                 }
                 break;
             case 4:
-                List<TableDbPhoneIp> list4 = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(gatheredResults[0]);
-                foreach (var item in list4)
+                foreach (string strGatheredResults in gatheredResults)
                 {
-                    Console.WriteLine($"\n {item.id} " +
-                        $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    List<TableDbPhoneIp> list = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(strGatheredResults);
+                    foreach (var item in list)
+                    {
+                        Console.WriteLine($"\n {item.id} " +
+                            $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    }
                 }
                 break;
             case 5:
-                List<NestedResult> nestedResults5 = JsonConvert.DeserializeObject<List<NestedResult>>(gatheredResults[0]);
-                foreach (var nestedResult in nestedResults5)
+
+                foreach (string strGatheredResults in gatheredResults)
                 {
-                    Console.WriteLine($"\n table1 " +
-                        $"{nestedResult.t1.id} {nestedResult.t1.email}" +
-                        $" {nestedResult.t1.country} {nestedResult.t1.city}" +
-                        $" {nestedResult.t1.full_name} {nestedResult.t1.phone}" +
-                        $" {nestedResult.t1.ip} \n {nestedResult.t2.id} " +
-                        $"{nestedResult.t2.email} {nestedResult.t2.country} {nestedResult.t2.city} " +
-                        $"{nestedResult.t2.full_name} {nestedResult.t2.phone} {nestedResult.t2.ip} \n");
+                    List<NestedResult> nestedResults5 = JsonConvert.DeserializeObject<List<NestedResult>>(strGatheredResults);
+                    foreach (var nestedResult in nestedResults5)
+                    {
+                        Console.WriteLine($"\n table1 " +
+                            $"{nestedResult.t1.id} {nestedResult.t1.email}" +
+                            $" {nestedResult.t1.country} {nestedResult.t1.city}" +
+                            $" {nestedResult.t1.full_name} {nestedResult.t1.phone}" +
+                            $" {nestedResult.t1.ip} \n {nestedResult.t2.id} " +
+                            $"{nestedResult.t2.email} {nestedResult.t2.country} {nestedResult.t2.city} " +
+                            $"{nestedResult.t2.full_name} {nestedResult.t2.phone} {nestedResult.t2.ip} \n");
+                    }
                 }
                 break;
             case 6:
-                List<GameLineupsResults> gameLineupsResults = JsonConvert.DeserializeObject<List<GameLineupsResults>>(gatheredResults[0]);
-                foreach (var result in gameLineupsResults)
+                foreach (string strGatheredResults in gatheredResults)
                 {
-                    Console.WriteLine($"Game Info: {result.Game.game_id} {result.Game.team} {result.Game.city} {result.Game.goals} {result.Game.own}");
-                    Console.WriteLine($"Lineup Info: {result.Lineup.game_id} {result.Lineup.player_id} {result.Lineup.start}" +
-                        $" {result.Lineup.cards} {result.Lineup.time_in} {result.Lineup.goals} \n");
+                    List<GameLineupsResults> gameLineupsResults = JsonConvert.DeserializeObject<List<GameLineupsResults>>(strGatheredResults);
+                    foreach (var result in gameLineupsResults)
+                    {
+                        Console.WriteLine($"Game Info: {result.Game.game_id} {result.Game.team} {result.Game.city} {result.Game.goals} {result.Game.own}");
+                        Console.WriteLine($"Lineup Info: {result.Lineup.game_id} {result.Lineup.player_id} {result.Lineup.start}" +
+                            $" {result.Lineup.cards} {result.Lineup.time_in} {result.Lineup.goals} \n");
+                    }
                 }
                 break;
             case 7:
-                List<JoinedResults> joinedResults = JsonConvert.DeserializeObject<List<JoinedResults>>(gatheredResults[0]);
-                foreach (var result in joinedResults)
+                foreach (string strGatheredResults in gatheredResults)
                 {
-                    Console.WriteLine($"Информация о DbPhoneIp: {result.DbPhoneIp.id} {result.DbPhoneIp.email} {result.DbPhoneIp.country} {result.DbPhoneIp.city} {result.DbPhoneIp.full_name} {result.DbPhoneIp.phone} {result.DbPhoneIp.ip} ");
-                    Console.WriteLine($"Информация об игре: {result.Game.game_id} {result.Game.team} {result.Game.city} {result.Game.goals} {result.Game.own} \n");
+                    List<JoinedResults> joinedResults = JsonConvert.DeserializeObject<List<JoinedResults>>(strGatheredResults);
+                    foreach (var result in joinedResults)
+                    {
+                        Console.WriteLine($"Информация о DbPhoneIp: {result.DbPhoneIp.id} {result.DbPhoneIp.email} {result.DbPhoneIp.country} {result.DbPhoneIp.city} {result.DbPhoneIp.full_name} {result.DbPhoneIp.phone} {result.DbPhoneIp.ip} ");
+                        Console.WriteLine($"Информация об игре: {result.Game.game_id} {result.Game.team} {result.Game.city} {result.Game.goals} {result.Game.own} \n");
+                    }
                 }
                 break;
             default:
-                foreach (string StrGatheredResults in gatheredResults)
+                foreach (string strGatheredResults in gatheredResults)
                 {
-                    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
+                    List<TableDbPhoneIp> list = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(strGatheredResults);
+                    foreach (var item in list)
+                    {
+                        Console.WriteLine($"\n {item.id} " +
+                            $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
+                    }
                 }
                 break;
         }
