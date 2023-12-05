@@ -64,6 +64,12 @@ public class GameLineupsResults
     public TableGames Game { get; set; }
     public TableLineups Lineup { get; set; }
 }
+[Table("JoinedResults")]
+public class JoinedResults
+{
+    public TableDbPhoneIp DbPhoneIp { get; set; }
+    public TableGames Game { get; set; }
+}
 class Program
 {
     static string ExecuteQuery(SampleDbContext dbContext, int selectedQuery, int start, int chunkSize)
@@ -104,9 +110,16 @@ class Program
                 return JsonConvert.SerializeObject(result);
             case 7:
                 result = dbContext.db_phone_ip
-                        .Join(dbContext.games, db_phone_ip => db_phone_ip.id, games => games.game_id, (db_phone_ip, game) => new { db_phone_ip, game })
-                        .Skip(start).Take(chunkSize);
+                    .GroupJoin(
+                        dbContext.games,
+                        db_phone_ip => db_phone_ip.id,
+                        game => game.game_id,
+                        (db_phone_ip, games) => new { DbPhoneIp = db_phone_ip, Games = games.DefaultIfEmpty() })
+                    .SelectMany(x => x.Games, (db_phone_ip, game) => new { DbPhoneIp = db_phone_ip.DbPhoneIp, Game = game })
+                    .Skip(start)
+                    .Take(chunkSize);
                 return JsonConvert.SerializeObject(result);
+
             default:
                 result = dbContext.db_phone_ip
                         .Skip(start).Take(chunkSize);
@@ -171,7 +184,14 @@ class Program
                         $" {result.Lineup.cards} {result.Lineup.time_in} {result.Lineup.goals} \n");
                 }
                 break;
-
+            case 7:
+                List<JoinedResults> joinedResults = JsonConvert.DeserializeObject<List<JoinedResults>>(gatheredResults[0]);
+                foreach (var result in joinedResults)
+                {
+                    Console.WriteLine($"Информация о DbPhoneIp: {result.DbPhoneIp.id} {result.DbPhoneIp.email} {result.DbPhoneIp.country} {result.DbPhoneIp.city} {result.DbPhoneIp.full_name} {result.DbPhoneIp.phone} {result.DbPhoneIp.ip} ");
+                    Console.WriteLine($"Информация об игре: {result.Game.game_id} {result.Game.team} {result.Game.city} {result.Game.goals} {result.Game.own} \n");
+                }
+                break;
             default:
                 foreach (string StrGatheredResults in gatheredResults)
                 {
