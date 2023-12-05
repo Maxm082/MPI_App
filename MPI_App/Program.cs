@@ -6,15 +6,12 @@ using MPI;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using Newtonsoft.Json;
-using MySqlX.XDevAPI.Common;
 
 public class SampleDbContext : DbContext
 {
     public DbSet<TableDbPhoneIp> db_phone_ip { get; set; }
     public DbSet<TableGames> games { get; set; }
     public DbSet<TableLineups> lineups { get; set; }
-    public DbSet<TableResults> results { get; set; }
-
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -35,7 +32,6 @@ public class TableDbPhoneIp
     public string phone { get; set; }
     public string ip { get; set; }
 }
-
 [Table("games")]
 public class TableGames
 {
@@ -57,30 +53,18 @@ public class TableLineups
     public int? time_in { get; set; }
     public int? goals { get; set; }
 }
-[Table("results")]
-public class TableResults
+public class NestedResult
 {
-    public int id { get; set; }
-    public string email { get; set; }
-    public string country { get; set; }
-    public string city1 { get; set; }
-    public string full_name { get; set; }
-    public string phone { get; set; }
-    public string ip { get; set; }
-    public int game_id1 { get; set; }
-    public string team { get; set; }
-    public string city2 { get; set; }
-    public int goals1 { get; set; }
-    public int own { get; set; }
-    public int game_id2 { get; set; }
-    public int player_id { get; set; }
-    public char start { get; set; }
-    public char? cards { get; set; }
-    public int? time_in { get; set; }
-    public int? goals2 { get; set; }
+    public TableDbPhoneIp t1 { get; set; }
+    public TableDbPhoneIp t2 { get; set; }
 }
-
-    class Program
+[Table("GameLineupsResults")]
+public class GameLineupsResults
+{
+    public TableGames Game { get; set; }
+    public TableLineups Lineup { get; set; }
+}
+class Program
 {
     static string ExecuteQuery(SampleDbContext dbContext, int selectedQuery, int start, int chunkSize)
     {
@@ -113,15 +97,15 @@ public class TableResults
                         .Skip(start).Take(chunkSize);
                 return JsonConvert.SerializeObject(result);
             case 6:
-                result = dbContext.db_phone_ip
-                        .Join(dbContext.games, game => game.id, db_phone_ip => db_phone_ip.game_id, (game, db_phone_ip) => new { game, db_phone_ip })
-                        .Skip(start).Take(chunkSize);
-                return JsonConvert.SerializeObject(result);
-            case 7:
                 result = dbContext.games
                         .Join(dbContext.lineups, game => game.game_id, lineup => lineup.game_id, (game, lineup) => new { game, lineup })
                         .Skip(start)
                         .Take(chunkSize);
+                return JsonConvert.SerializeObject(result);
+            case 7:
+                result = dbContext.db_phone_ip
+                        .Join(dbContext.games, db_phone_ip => db_phone_ip.id, games => games.game_id, (db_phone_ip, game) => new { db_phone_ip, game })
+                        .Skip(start).Take(chunkSize);
                 return JsonConvert.SerializeObject(result);
             default:
                 result = dbContext.db_phone_ip
@@ -134,48 +118,60 @@ public class TableResults
         switch (selectedQuery)
         {
             case 1:
-                foreach (string strGatheredResults in gatheredResults)
+                List<TableDbPhoneIp> list1 = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(gatheredResults[0]);
+                foreach (var item in list1)
                 {
-                    TableDbPhoneIp objStrGathere = JsonConvert.DeserializeObject<TableDbPhoneIp>(strGatheredResults);
-                    Console.WriteLine($"{objStrGathere.id}");
+                    Console.WriteLine($"\n {item.id} " +
+                        $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
                 }
                 break;
             case 2:
-                foreach (string StrGatheredResults in gatheredResults)
+                List<TableDbPhoneIp> list2 = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(gatheredResults[0]);
+                foreach (var item in list2)
                 {
-                    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
+                    Console.WriteLine($"\n {item.id} " +
+                        $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
                 }
                 break;
             case 3:
-                foreach (string StrGatheredResults in gatheredResults)
+                List<TableDbPhoneIp> list3 = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(gatheredResults[0]);
+                foreach (var item in list3)
                 {
-                    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
+                    Console.WriteLine($"\n {item.id} " +
+                        $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
                 }
                 break;
             case 4:
-                foreach (string StrGatheredResults in gatheredResults)
+                List<TableDbPhoneIp> list4 = JsonConvert.DeserializeObject<List<TableDbPhoneIp>>(gatheredResults[0]);
+                foreach (var item in list4)
                 {
-                    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
+                    Console.WriteLine($"\n {item.id} " +
+                        $"{item.email} {item.country} {item.city} {item.full_name} {item.phone} {item.ip} \n");
                 }
                 break;
             case 5:
-                foreach (string StrGatheredResults in gatheredResults)
+                List<NestedResult> nestedResults5 = JsonConvert.DeserializeObject<List<NestedResult>>(gatheredResults[0]);
+                foreach (var nestedResult in nestedResults5)
                 {
-                    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
+                    Console.WriteLine($"\n table1 " +
+                        $"{nestedResult.t1.id} {nestedResult.t1.email}" +
+                        $" {nestedResult.t1.country} {nestedResult.t1.city}" +
+                        $" {nestedResult.t1.full_name} {nestedResult.t1.phone}" +
+                        $" {nestedResult.t1.ip} \n {nestedResult.t2.id} " +
+                        $"{nestedResult.t2.email} {nestedResult.t2.country} {nestedResult.t2.city} " +
+                        $"{nestedResult.t2.full_name} {nestedResult.t2.phone} {nestedResult.t2.ip} \n");
                 }
                 break;
             case 6:
-                foreach (string StrGatheredResults in gatheredResults)
+                List<GameLineupsResults> gameLineupsResults = JsonConvert.DeserializeObject<List<GameLineupsResults>>(gatheredResults[0]);
+                foreach (var result in gameLineupsResults)
                 {
-                    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
+                    Console.WriteLine($"Game Info: {result.Game.game_id} {result.Game.team} {result.Game.city} {result.Game.goals} {result.Game.own}");
+                    Console.WriteLine($"Lineup Info: {result.Lineup.game_id} {result.Lineup.player_id} {result.Lineup.start}" +
+                        $" {result.Lineup.cards} {result.Lineup.time_in} {result.Lineup.goals} \n");
                 }
                 break;
-            case 7:
-                foreach (string StrGatheredResults in gatheredResults)
-                {
-                    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
-                }
-                break;
+
             default:
                 foreach (string StrGatheredResults in gatheredResults)
                 {
@@ -191,8 +187,6 @@ public class TableResults
             return (int)(long)command.ExecuteScalar();
         }
     }
-
-
     static void Main(string[] args)
     {
         Stopwatch stopwatch = new Stopwatch();
@@ -226,10 +220,6 @@ public class TableResults
                 if (comm.Rank == 0)
                 {
                     PrintGatheredResults(gatheredResults, selectedQuery);
-                    //foreach (string StrGatheredResults in gatheredResults)
-                    //{
-                    //    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
-                    //}
                     stopwatch.Stop();
                     Console.WriteLine($"Программа выполнялась {stopwatch.ElapsedMilliseconds} миллисекунд.");
                 }
