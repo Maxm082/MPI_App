@@ -1,4 +1,4 @@
-﻿//подключение к БД происходит в строке 20, в строке 165
+﻿//подключение к БД происходит в строке 21, в строке 214
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
@@ -226,10 +226,6 @@ public class TableResults
                 if (comm.Rank == 0)
                 {
                     PrintGatheredResults(gatheredResults, selectedQuery);
-                    //foreach (string StrGatheredResults in gatheredResults)
-                    //{
-                    //    Console.WriteLine(JsonConvert.DeserializeObject<object>(StrGatheredResults));
-                    //}
                     stopwatch.Stop();
                     Console.WriteLine($"Программа выполнялась {stopwatch.ElapsedMilliseconds} миллисекунд.");
                 }
