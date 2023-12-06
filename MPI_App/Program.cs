@@ -71,6 +71,7 @@ public class JoinedResults
     public TableGames Game { get; set; }
 }
 class Program
+
 {
     static string ExecuteQuery(SampleDbContext dbContext, int selectedQuery, int start, int chunkSize)
     {
