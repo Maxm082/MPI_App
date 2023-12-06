@@ -1,0 +1,35 @@
+player_id,first_name,last_name,nickname,citizenship,dob,role
+1,Loris,Karius,Karius,Germany,1993-06-22,GOALKEEPER
+2,Nathaniel,Clyne,Clyne,NULL,1991-04-05,DEFENDER
+3,"Fabio Henrique",Tavares,Fabinho,Brazil,1993-10-23,MIDFIELDER
+4,Virgil,"Van Dijk",Virgil,Netherland,1991-07-08,DEFENDER
+5,Georginio,Wijnaldum,Wijnaldum,Netherland,1990-11-11,MIDFIELDER
+6,Dejan,Lovren,Lovren,Croatia,1989-07-05,DEFENDER
+7,James,Milner,Milner,NULL,1986-01-04,MIDFIELDER
+8,Naby,Keita,Keita,Guinea,1995-02-10,MIDFIELDER
+9,Robert,Firmino,Firmino,Brazil,1991-10-02,FORWARD
+10,Sadio,Mane,Mane,Senegal,1992-04-10,FORWARD
+11,Mohamed,Salah,M.Salah,Egypt,1992-06-15,FORWARD
+12,Joe,Gomez,Gomez,NULL,1997-05-23,DEFENDER
+13,Alisson,Becker,A.Becker,Brazil,1992-10-02,GOALKEEPER
+14,Jordan,Henderson,Henderson,NULL,1990-06-17,MIDFIELDER
+15,Daniel,Sturridge,Sturridge,NULL,1989-09-01,FORWARD
+18,Alberto,Moreno,Moreno,Spain,1992-07-05,DEFENDER
+20,Adam,Lallana,Lallana,NULL,1988-05-10,MIDFIELDER
+21,Alex,Oxlade-Chamberlain,Oxlade-Chamberlain,NULL,1993-08-15,MIDFIELDER
+22,Simon,Mignolet,Mignolet,Belgia,1988-03-06,GOALKEEPER
+23,Xherdan,Shaqiri,Shaqiri,Switzerland,1991-10-10,MIDFIELDER
+24,Rhian,Brewster,Brewster,NULL,2000-04-01,FORWARD
+26,Andy,Robertson,Robertson,Scotland,1994-03-11,DEFENDER
+27,Divock,Origi,Origi,Belgia,1995-04-18,FORWARD
+29,Dominic,Solanke,Solanke,Belgia,1997-09-14,FORWARD
+32,Joel,Matip,Matip,Germany,1991-08-08,DEFENDER
+47,Nathaniel,Phillips,Phillips,NULL,1997-03-21,DEFENDER
+48,Curtis,Jones,Jones,NULL,2001-01-30,MIDFIELDER
+50,Lazar,Markovic,Markovic,Serbia,1994-03-02,MIDFIELDER
+53,Ovie,Ejaria,Ejaria,NULL,1997-11-18,MIDFIELDER
+62,Caoimhin,Kelleher,Kelleher,Ireland,1998-11-23,GOALKEEPER
+64,Rafael,Camacho,Camacho,Portugal,2000-05-22,MIDFIELDER
+66,Trent,Alexander-Arnold,Alexander-Arnold,NULL,1998-10-07,DEFENDER
+68,Pedro,Chirivella,Chirivella,Spain,1997-05-23,MIDFIELDER
+73,Kamil,Grabara,Grabara,Poland,1999-01-08,GOALKEEPER
