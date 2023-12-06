@@ -1,0 +1,39 @@
+game_id,team,city,goals,game_date,own
+1,"West Ham United",-,0,"2018-08-12 13:30:00",0
+2,"Crystal Palace",London,0,"2018-08-20 20:00:00",0
+3,"Brighton & Hove Albion",-,0,"2018-08-25 17:30:00",0
+4,"Leicester City",Leicester,1,"2018-09-01 12:30:00",0
+5,"Tottenham Hotspur",London,1,"2018-09-15 12:30:00",0
+6,Southampton,-,0,"2018-09-22 15:00:00",1
+7,Chelsea,London,1,"2018-09-29 17:30:00",0
+8,"Manchester City",-,0,"2018-10-07 16:30:00",0
+9,"Huddersfield Town",Huddersfield,0,"2018-10-20 17:30:00",0
+10,"Cardiff City",-,1,"2018-10-27 15:00:00",0
+11,Arsenal,London,1,"2018-11-03 17:30:00",0
+12,Fulham,-,0,"2018-11-11 12:00:00",0
+13,Watford,Watford,0,"2018-11-24 15:00:00",0
+14,Everton,-,0,"2018-12-02 16:15:00",0
+15,Burnley,Burnley,1,"2018-12-05 19:45:00",0
+16,Bournemouth,Bournemouth,0,"2018-12-08 12:30:00",1
+17,"Manchester United",-,1,"2018-12-16 16:00:00",0
+18,"Wolverhampton Wanderers",Wolverhampton,0,"2018-12-21 20:00:00",0
+19,"Newcastle United",-,0,"2018-12-26 15:00:00",0
+20,Arsenal,-,1,"2018-12-29 17:30:00",0
+21,"Manchester City",Manchester,2,"2019-01-03 20:00:00",0
+22,"Brighton & Hove Albion",Brighton,0,"2019-01-12 15:00:00",0
+23,"Crystal Palace",-,3,"2019-01-19 15:00:00",0
+24,"Leicester City",-,1,"2019-01-30 20:00:00",0
+25,"West Ham United",London,1,"2019-02-04 20:00:00",0
+26,Bournemouth,-,0,"2019-02-09 15:00:00",0
+27,"Manchester United",Manchester,0,"2019-02-24 14:05:00",0
+28,Watford,-,0,"2019-02-27 20:00:00",0
+29,Everton,Liverpool,0,"2019-03-03 16:15:00",0
+30,Burnley,-,2,"2019-03-10 12:00:00",0
+31,Fulham,London,1,"2019-03-17 14:15:00",0
+32,"Tottenham Hotspur",-,1,"2019-03-31 16:30:00",1
+33,Southampton,Southampton,1,"2019-04-05 20:00:00",0
+34,Chelsea,-,0,"2019-04-14 16:30:00",0
+35,"Cardiff City",Cardiff,0,"2019-04-21 16:00:00",0
+36,"Huddersfield Town",-,0,"2019-04-26 20:00:00",0
+37,"Newcastle United","Newcastle upon Tyne",2,"2019-05-04 19:45:00",0
+38,"Wolverhampton Wanderers",-,0,"2019-05-12 15:00:00",0
